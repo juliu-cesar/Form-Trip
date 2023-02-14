@@ -1,4 +1,5 @@
-import "@/styles/globals.css";
+import React, { useContext } from "react";
+import ColorProvider, { ColorContext } from "@/src/Header/components/ColorProvider";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../styles/CSSReset";
@@ -20,11 +21,27 @@ const theme = {
   },
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
+  const context = useContext(ColorContext);
+  
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={(theme as any)[context.mode]}>
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>
   );
+}
+function ProviderWrapper(props: any) {
+	return (
+		<ColorProvider initialValue={"dark"}>
+				{props.children}
+		</ColorProvider>
+	);
+}
+export default function App(props: any) {
+	return (
+		<ProviderWrapper>
+			<MyApp {...props} />
+		</ProviderWrapper>
+	);
 }
