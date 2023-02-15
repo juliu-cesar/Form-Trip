@@ -5,6 +5,7 @@ export const StyledCarousel = styled.div`
   max-width: 1200px;
   padding: 0 16px;
   margin: auto;
+  margin-bottom: 30px;
   button{
     width: 45px;
     height: 45px;

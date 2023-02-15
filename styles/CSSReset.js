@@ -26,8 +26,9 @@ export const CSSReset = createGlobalStyle`
   /* Globals */
   button,
   a {
+    cursor: pointer;
     text-decoration: none;
     opacity: 1;
-    transition: .4s;
+    transition: all .4s;
   }
 `;
