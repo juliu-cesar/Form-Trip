@@ -16,8 +16,8 @@ export default function Header() {
       <div className="frame_header">
         <div className="logo">Form Trip</div>
         <div className="btn_theme" onClick={toggleBtn}>
-          <img className="icon-sun" src="img/sun-icon.svg" alt="Ícone do sol" />
-          <img className="icon-moon" src="img/moon-icon.svg" alt="Ícone da lua" />
+          <img className="icon-sun" src="img/icon/sun-icon.svg" alt="Ícone do sol" />
+          <img className="icon-moon" src="img/icon/moon-icon.svg" alt="Ícone da lua" />
           <span className="cover_theme"></span>
         </div>
       </div>

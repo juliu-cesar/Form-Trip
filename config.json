@@ -1,0 +1,59 @@
+{
+  "houses": [
+    {
+      "url": "hut-forest",
+      "bedrooms": [
+        {
+          "beds": "1 cama de casal",
+          "bed_queen": 1,
+          "bed_single": 0
+        },
+        {
+          "beds": "2 camas de solteiro",
+          "bed_queen": 0,
+          "bed_single": 2
+        }
+      ]
+    },
+    {
+      "url": "hut-lake-mountain",
+      "bedrooms": [
+        {
+          "beds": "1 cama de casal, 1 cama de solteiro",
+          "bed_queen": 1,
+          "bed_single": 1
+        }
+      ]
+    },
+    {
+      "url": "hut-river",
+      "bedrooms": [
+        {
+          "beds": "1 cama de casal",
+          "bed_queen": 1,
+          "bed_single": 0
+        },
+        {
+          "beds": "1 cama de casal",
+          "bed_queen": 1,
+          "bed_single": 0
+        },
+        {
+          "beds": "2 camas de solteiro",
+          "bed_queen": 0,
+          "bed_single": 2
+        }
+      ]
+    },
+    {
+      "url": "hut-snow",
+      "bedrooms": [
+        {
+          "beds": "2 camas de casal",
+          "bed_queen": 2,
+          "bed_single": 0
+        }
+      ]
+    }
+  ]
+}
