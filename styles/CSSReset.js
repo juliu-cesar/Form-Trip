@@ -10,8 +10,8 @@ export const CSSReset = createGlobalStyle`
   body {
 		background-color: ${({theme})=> theme.background_base};
 		color: ${({theme})=> theme.text_color};
-    font-family: 'Mukta', sans-serif;
-    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    width: 100vw;
   }
   .icon{
     width: 20px;
@@ -27,6 +27,6 @@ export const CSSReset = createGlobalStyle`
   a {
     text-decoration: none;
     opacity: 1;
-    transition: .25s;
+    transition: .4s;
   }
 `;

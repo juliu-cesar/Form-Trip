@@ -1,3 +1,4 @@
+import Carousel from '@/src/Carousel'
 import Header from '@/src/Header'
 import Head from 'next/head'
 
@@ -11,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/img/FT-icon.ico" />
       </Head>
       <Header />
-      
+      <Carousel />
     </>
   )
 }

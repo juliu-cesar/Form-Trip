@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledHeader = styled.header`
 width: 100vw;
 height: 60px;
+margin-bottom: 25px;
 .frame_header{
   width: 100%;
   height: 100%;

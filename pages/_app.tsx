@@ -3,6 +3,7 @@ import ColorProvider, { ColorContext } from "@/src/Header/components/ColorProvid
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../styles/CSSReset";
+import CarouselProvider from "@/src/Carousel/components/CarouselProvider";
 
 const theme = {
   light: {
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 function ProviderWrapper(props: any) {
 	return (
 		<ColorProvider initialValue={"dark"}>
+      <CarouselProvider initialValue={0}>
 				{props.children}
+      </CarouselProvider>
 		</ColorProvider>
 	);
 }
