@@ -11,7 +11,8 @@ export const CSSReset = createGlobalStyle`
 		background-color: ${({theme})=> theme.background_base};
 		color: ${({theme})=> theme.text_color};
     font-family: 'Montserrat', sans-serif;
-    width: 100vw;
+    width: 99vw;
+    overflow-x: hidden;
   }
   .icon{
     width: 20px;
@@ -19,7 +20,7 @@ export const CSSReset = createGlobalStyle`
   }
   /* NextJS */
   #__next {
-		width: 100vw;
+    width: 100%;
     min-width: 280px;
   }
   /* Globals */

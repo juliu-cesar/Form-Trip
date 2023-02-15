@@ -1,5 +1,6 @@
 import Carousel from '@/src/Carousel'
 import Header from '@/src/Header'
+import Principal from '@/src/Main'
 import Head from 'next/head'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <Header />
       <Carousel />
+      <Principal />
     </>
   )
 }
