@@ -7,7 +7,6 @@ import { StyledRooms } from "./components/StyledRooms";
 
 export default function Amenities() {
   const context = useContext(ColorContext);
-  const [src, setSrc] = useState<string>("");
 
   return (
     <StyledAmenities>
