@@ -8,7 +8,7 @@ export const StyledCarousel = styled.div`
   margin-bottom: 30px;
   button{
     width: 45px;
-    height: 45px;
+    height: 40px;
     padding: 5px;
     border-radius: 50%;
     transition: all .4s;
@@ -55,6 +55,16 @@ export const StyledCarousel = styled.div`
     height: 100%;
     img {
       width: 100%;
+    }
+  }
+  @media (min-width: 1000px) {
+    .card_img {
+      img {
+        position: absolute;
+        top: -20%;
+        left: 0;
+        width: 100%;
+      }
     }
   }
 `;

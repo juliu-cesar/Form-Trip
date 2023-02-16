@@ -2,54 +2,7 @@ import styled from "styled-components";
 
 export const StyledRegister = styled.div`
   width: 100%;
-  .Container {
-    width: calc(100% - 10px);
-    border-left: 2px solid;
-    border-right: 2px solid;
-    border-color: ${({ theme }) => theme.primary_color};
-    padding: 15px;
-  }
-  .Buttons_account {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 15px;
-    button {
-      background-color: unset;
-      color: ${({ theme }) => theme.text_color};
-      width: 30%;
-      height: 40px;
-      font-size: 17px;
-      font-weight: 600;
-      border: unset;
-    }
-    .select {
-      border-bottom: 3px solid ${({ theme }) => theme.primary_color};
-    }
-  }
-  .account {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    label {
-      font-size: 15px;
-      font-weight: 600;
-    }
-    input,
-    select {
-      background-color: unset;
-      color: ${({ theme }) => theme.text_color};
-      height: 40px;
-      padding-left: 5px;
-      margin-top: 2px;
-      margin-bottom: 15px;
-      border: unset;
-      border-bottom: 3px solid ${({ theme }) => theme.primary_color};
-    }
-  }
+  margin-bottom: 25px; 
   .address {
     position: relative;
     padding: 15px;

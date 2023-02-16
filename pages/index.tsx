@@ -1,4 +1,5 @@
 import Carousel from '@/src/Carousel'
+import Footer from '@/src/Footer'
 import Header from '@/src/Header'
 import Principal from '@/src/Main'
 import Head from 'next/head'
@@ -15,6 +16,8 @@ export default function Home() {
       <Header />
       <Carousel />
       <Principal />
+
+      <Footer />
     </>
   )
 }

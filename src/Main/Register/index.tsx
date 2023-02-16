@@ -1,14 +1,17 @@
+import { StyledButtons } from "../components/StyledButtons";
+import { StyledContainer } from "../components/StyledContainer";
+import { StyledForm } from "../components/StyledForm";
 import { StyledRegister } from "./components/StyledRegister";
 
 export default function Register() {
   return (
     <StyledRegister>
-      <div className="Container">
-        <div className="Buttons_account">
+      <StyledContainer>
+        <StyledButtons>
           <button className="">Login</button>
           <button className="select">Cadastrar</button>
-        </div>
-        <form className="account">
+        </StyledButtons>
+        <StyledForm id="Account">
           <label htmlFor="email">Email</label>
           <input id="email" type="email"  />
           <label htmlFor="password">Senha</label>
@@ -48,8 +51,8 @@ export default function Register() {
             </div>
           </div>
           <button type="submit">Cadastrar</button>
-        </form>
-      </div>
+        </StyledForm>
+      </StyledContainer>
     </StyledRegister>
   );
 }
