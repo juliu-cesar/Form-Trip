@@ -7,5 +7,5 @@ export const StyledContainer = styled.div<{
   border-left: 2px solid;
   border-right: 2px solid;
   border-color: ${({ theme, Border }) => theme[Border]};
-  padding: 15px 30px;
+  padding: 15px 20px;
 `;

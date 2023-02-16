@@ -10,8 +10,10 @@ export const StyledMain = styled.div`
   gap: 20px;
   .left_side{
     width: 100%;
+    min-width: 420px;
   }
   .right_side{
     width: 100%;
+    min-width: 420px;
   }
 `

@@ -16,7 +16,7 @@ margin-bottom: 25px;
   align-items: center;
 }
 .logo{
-  color: ${({theme})=> theme.primary_color};
+  color: ${({theme})=> theme.color1};
   font-family: 'Lobster', cursive;
   font-size: 35px;
 }

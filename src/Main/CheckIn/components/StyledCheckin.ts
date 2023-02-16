@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledCheckin = styled.div`
   width: 100%;
+  margin-bottom: 25px;
   #Price {
     font-size: 20px;
     font-weight: 600;

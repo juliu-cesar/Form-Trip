@@ -9,14 +9,18 @@ const theme = {
   light: {
     color1: "#FFB60D",
     color2: "#088000",
-
+    
+    gray: "#999999",
+    semi_black: "#808080",
     background_base: "#D8D8D8",
     text_color: "#252525",
   },
   dark: {
     color1: "#FFB60D",
     color2: "#088000",
-
+    
+    gray: "#7e7e7e",
+    semi_black: "#505050",
     background_base: "#252525",
     text_color: "#D8D8D8",
   },
