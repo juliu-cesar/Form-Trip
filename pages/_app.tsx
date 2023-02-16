@@ -7,15 +7,15 @@ import CarouselProvider from "@/src/Carousel/components/CarouselProvider";
 
 const theme = {
   light: {
-    primary_color: "#FFB60D",
-    primary_color_2: "#088000",
+    color1: "#FFB60D",
+    color2: "#088000",
 
     background_base: "#D8D8D8",
     text_color: "#252525",
   },
   dark: {
-    primary_color: "#FFB60D",
-    primary_color_2: "#088000",
+    color1: "#FFB60D",
+    color2: "#088000",
 
     background_base: "#252525",
     text_color: "#D8D8D8",

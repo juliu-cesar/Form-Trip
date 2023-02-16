@@ -6,7 +6,7 @@ import { StyledRegister } from "./components/StyledRegister";
 export default function Register() {
   return (
     <StyledRegister>
-      <StyledContainer>
+      <StyledContainer Border="color1">
         <StyledButtons>
           <button className="">Login</button>
           <button className="select">Cadastrar</button>

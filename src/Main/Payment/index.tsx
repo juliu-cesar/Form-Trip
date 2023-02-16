@@ -6,7 +6,7 @@ import { StyledPayment } from "./components/StyledPayment";
 export default function Payment() {
   return (
     <StyledPayment>
-      <StyledContainer>
+      <StyledContainer Border="color1">
         <StyledButtons>
           <button className="">Pix</button>
           <button className="select">Cartão</button>

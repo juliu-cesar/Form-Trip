@@ -9,7 +9,7 @@ export const StyledRegister = styled.div`
     margin: 15px 0;
     display: flex;
     flex-direction: column;
-    border: 2px solid ${({ theme }) => theme.primary_color};
+    border: 2px solid ${({ theme }) => theme.color1};
     border-radius: 10px;
     h4{
       position: absolute;
@@ -36,7 +36,7 @@ export const StyledRegister = styled.div`
     }
   }
   button[type='submit']{
-    background-color: ${({ theme }) => theme.primary_color};
+    background-color: ${({ theme }) => theme.color1};
     color: #333;
     width: 100%;
     height: 50px;

@@ -8,7 +8,7 @@ export const StyledCheckin = styled.div`
     margin-bottom: 15px;
   }
   .check-in {
-    border: 2px solid ${({ theme }) => theme.primary_color_2};
+    border: 2px solid ${({ theme }) => theme.color2};
     border-radius: 10px;
     display: grid;
     grid-template-areas:
@@ -24,11 +24,11 @@ export const StyledCheckin = styled.div`
       align-items: center;
     }
     .card_checkin {
-      border-right: 2px solid ${({ theme }) => theme.primary_color_2};
+      border-right: 2px solid ${({ theme }) => theme.color2};
     }
     .card_amount {
       grid-area: amount;
-      border-top: 2px solid ${({ theme }) => theme.primary_color_2};
+      border-top: 2px solid ${({ theme }) => theme.color2};
     }
   }
   .Inline{

@@ -17,7 +17,7 @@ export const StyledForm = styled.form`
     margin-top: 2px;
     margin-bottom: 15px;
     border: unset;
-    border-bottom: 3px solid ${({ theme }) => theme.primary_color};
+    border-bottom: 3px solid ${({ theme }) => theme.color1};
     ::-webkit-input-placeholder{
       color: ${({ theme }) => theme.text_color};
     }

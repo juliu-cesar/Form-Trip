@@ -19,6 +19,6 @@ export const StyledButtons = styled.div`
       border: unset;
     }
     .select {
-      border-bottom: 3px solid ${({ theme }) => theme.primary_color};
+      border-bottom: 3px solid ${({ theme }) => theme.color1};
     }
 `

@@ -7,7 +7,7 @@ export default function CheckIn(){
 
   return(
     <StyledCheckin>
-      <StyledContainer>
+      <StyledContainer Border="color2">
         <div id="Price">R$ 000,00 dia</div>
         <StyledFrame className="frame_checkin">
           <div className="check-in">
