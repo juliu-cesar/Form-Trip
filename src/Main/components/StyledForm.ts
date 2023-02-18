@@ -30,23 +30,10 @@ export const StyledForm = styled.form`
       color: ${({ theme }) => theme.text_color};
     }
   }
-  .err_msg, .scc_msg{
-    position: absolute;
-    background-color: ${({ theme }) => theme.text_color};
-    width: 25px;
-    height: 25px;
-    top: 26px;
-    right: 16px;
-    border-radius: 50%;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all .5s;
-    img{
-      width: 20px;
-    }
-  }
+
+
+
+  
   .Inline{
     display: grid;
     grid-template-columns: 1fr 1fr;

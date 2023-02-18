@@ -63,6 +63,7 @@ export default function Register() {
                   <DisplayError
                     state={allStates}
                     id={e.id}
+                    msg={e.err_msg}
                     index={index}
                   />
                 )}

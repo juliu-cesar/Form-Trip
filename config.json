@@ -57,20 +57,50 @@
     }
   ],
   "form_register": [
-    { "id": "email", "type": "email", "label": "Email", "show_msg": true },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Email",
+      "show_msg": true,
+      "err_msg": [
+        { "msg": "Deve conter o @.", "class": "At_msg" },
+        { "msg": "Pelo menos um domínio.", "class": "Domain_msg" }
+      ]
+    },
     {
       "id": "password",
       "type": "password",
       "label": "Senha",
-      "show_msg": true
+      "show_msg": true,
+      "err_msg": [
+        { "msg": "Pelo menos um caractere especial.", "class": "Special_msg" },
+        { "msg": "Pelo menos um numero.", "class": "Number_msg" },
+        {
+          "msg": "Pelo menos uma letra maiúscula.",
+          "class": "CapitalLetter_msg"
+        },
+        { "msg": "Deve ter 8 caracteres ou mais.", "class": "More8_msg" }
+      ]
     },
     {
       "id": "password_2",
       "type": "password",
       "label": "Confirmar Senha",
-      "show_msg": true
+      "show_msg": true,
+      "err_msg": [
+        {
+          "msg": "Senha precisa ser idêntica a anterior.",
+          "class": "Equal_msg"
+        }
+      ]
     },
-    { "id": "CEP", "type": "number", "label": "CEP", "show_msg": true },
+    {
+      "id": "CEP",
+      "type": "number",
+      "label": "CEP",
+      "show_msg": true,
+      "err_msg": [{ "msg": "Deve ter 8 dígitos.", "class": "Must8_msg" }]
+    },
     { "id": "street", "type": "text", "label": "Rua" },
     { "id": "number", "type": "number", "label": "Numero" },
     { "id": "adjunct", "type": "text", "label": "Complemento" },

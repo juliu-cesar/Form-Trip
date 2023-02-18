@@ -1,46 +1,84 @@
 import { useEffect, useState } from "react";
 import { Validate } from "./Validate";
 import config from "../../../../config.json";
+import { StyledMsg } from "./StyledMsg";
 
 interface Props {
   state: string[];
   id: string;
+  msg: {
+    msg: string;
+    class: string;
+  }[];
   index: number;
 }
 
-export default function DisplayError({ state, id, index }: Props) {
+export default function DisplayError({ state, id, msg, index }: Props) {
+  const [borderColor, setBorderColor] = useState("red");
+  const [show, setShow] = useState(true);
   let cForm = config.form_register;
 
   useEffect(() => {
-    if (Validate[id as keyof typeof Validate](state[index], state[index - 1])) {
-      toggle(0, 1);
-      setTimeout(() => {
-        toggle(0, 0);
+    let aValidate = Validate[id as keyof typeof Validate](
+      state[index],
+      state[index - 1]
+    );
+    let timeout; 
+    if (aValidate.length == msg.length) {
+      if(timeout) return
+      clearAndSelect(aValidate);
+      setBorderColor("green");
+      timeout = setTimeout(() => {
+        toggle(0);
+        setTimeout(() => {
+          setShow(false);
+        }, 500);
       }, 5000);
     } else {
-      toggle(1, 0);
+      setShow(true);
+      clearAndSelect(aValidate);
+      toggle(1);
     }
   }, [state[index]]);
 
-  function toggle(i1: number, i2: number) {
+  function toggle(i1: number) {
     let elErr = document.querySelector(
       `[data-msg='err-${cForm[index].id}']`
     ) as HTMLElement;
-    let elScc = document.querySelector(
-      `[data-msg='scc-${cForm[index].id}']`
-    ) as HTMLElement;
-    if (!elErr && !elScc) return;
+    if (!elErr) return;
     elErr.style.opacity = String(i1);
-    elScc.style.opacity = String(i2);
+  }
+  function clearAndSelect(allV: string[]) {
+    let allP = document.querySelectorAll(
+      ".err_msg p"
+    ) as NodeListOf<HTMLElement>;
+    allP.forEach((e) => {
+      e.classList.remove("green");
+    });
+    allV.forEach((e) => {
+      let el = document.querySelector(`.${e}`) as HTMLElement;
+      if (!el) return;
+      el.classList.add("green");
+    });
   }
   return (
     <>
-      <span className="err_msg" data-msg={`err-${cForm[index].id}`}>
-        <img src="img/icon/close.svg" alt="ícone erro" />
-      </span>
-      <span className="scc_msg" data-msg={`scc-${cForm[index].id}`}>
-        <img src="img/icon/done.svg" alt="ícone sucesso" />
-      </span>
+      {show && (
+        <StyledMsg
+          className="err_msg"
+          data-msg={`err-${cForm[index].id}`}
+          Border_color={borderColor}
+        >
+          {/* <img src="img/icon/close.svg" alt="ícone erro" /> */}
+          {msg.map((e, i) => {
+            return (
+              <p key={i} className={e.class}>
+                {e.msg}
+              </p>
+            );
+          })}
+        </StyledMsg>
+      )}
     </>
   );
 }
