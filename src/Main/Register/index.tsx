@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { StyledButtons } from "../components/StyledButtons";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledForm } from "../components/StyledForm";
 import { StyledRegister } from "./components/StyledRegister";
-import { vCheckPassword, vEmail, vPassword } from "./components/Validate";
+import config from "../../../config.json";
+import DisplayError from "./components/DisplayError";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,28 @@ export default function Register() {
   const [adjunct, setAdjunct] = useState("");
   const [district, setDistrict] = useState("");
   const [city, setCity] = useState("");
+  const allStates = [
+    email,
+    password,
+    password_2,
+    CEP,
+    street,
+    number,
+    adjunct,
+    district,
+    city,
+  ];
+  const allSetStates = [
+    setEmail,
+    setPassword,
+    setPassword_2,
+    setCEP,
+    setStreet,
+    setNumber,
+    setAdjunct,
+    setDistrict,
+    setCity,
+  ];
 
   return (
     <StyledRegister>
@@ -24,115 +47,30 @@ export default function Register() {
           <button className="select">Cadastrar</button>
         </StyledButtons>
         <StyledForm id="Account">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              vEmail(e.target.value);
-            }}
-          />
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              vPassword(e.target.value);
-            }}
-          />
-          <label htmlFor="password_2">Confirmar Senha</label>
-          <input
-            id="password_2"
-            type="password"
-            value={password_2}
-            onChange={(e) => {
-              setPassword_2(e.target.value);
-              console.log(vCheckPassword(e.target.value, password));              
-            }}
-          />
+          {config.form_register.map((e, index) => {
+            return (
+              <div key={index}>
+                <label htmlFor={e.id}>{e.label}</label>
+                <input
+                  id={e.id}
+                  type={e.type}
+                  value={allStates[index]}
+                  onChange={(e) => {
+                    allSetStates[index](e.target.value);
+                  }}
+                />
+                {allStates[index].trim() != "" && e.show_msg && (
+                  <DisplayError state={allStates} index={index} />
+                )}
+              </div>
+            );
+          })}
 
-          <div className="address">
-            <h4>Endereço</h4>
-            <label htmlFor="CEP">CEP</label>
-            <input
-              id="CEP"
-              type="number"
-              value={CEP}
-              onChange={(e) => {
-                setCEP(e.target.value);
-                vEmail(e.target.value);
-              }}
-            />
-            <div className="Inline">
-              <div>
-                <label htmlFor="street">Rua</label>
-                <input
-                  id="street"
-                  type="text"
-                  value={street}
-                  onChange={(e) => {
-                    setStreet(e.target.value);
-                    vEmail(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <label htmlFor="number">Numero</label>
-                <input
-                  id="number"
-                  type="text"
-                  value={number}
-                  onChange={(e) => {
-                    setNumber(e.target.value);
-                    vEmail(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-            <label htmlFor="adjunct">Complemento</label>
-            <input
-              id="adjunct"
-              type="text"
-              value={adjunct}
-              onChange={(e) => {
-                setAdjunct(e.target.value);
-                vEmail(e.target.value);
-              }}
-            />
-            <label htmlFor="district">Bairro</label>
-            <input
-              id="district"
-              type="text"
-              value={district}
-              onChange={(e) => {
-                setDistrict(e.target.value);
-                vEmail(e.target.value);
-              }}
-            />
-            <div className="Inline">
-              <div>
-                <label htmlFor="city">Cidade</label>
-                <input
-                  id="city"
-                  type="text"
-                  value={city}
-                  onChange={(e) => {
-                    setCity(e.target.value);
-                    vEmail(e.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <label htmlFor="state">Estado</label>
-                <select name="" id="state">
-                  <option value="">Teste</option>
-                </select>
-              </div>
-            </div>
+          <div>
+            <label htmlFor="state">Estado</label>
+            <select name="state" id="state">
+              <option value="">Teste</option>
+            </select>
           </div>
           <button type="submit">Cadastrar</button>
         </StyledForm>

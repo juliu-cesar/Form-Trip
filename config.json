@@ -55,5 +55,26 @@
         }
       ]
     }
+  ],
+  "form_register": [
+    { "id": "email", "type": "email", "label": "Email", "show_msg": true },
+    {
+      "id": "password",
+      "type": "password",
+      "label": "Senha",
+      "show_msg": true
+    },
+    {
+      "id": "password_2",
+      "type": "password",
+      "label": "Confirmar Senha",
+      "show_msg": true
+    },
+    { "id": "CEP", "type": "number", "label": "CEP", "show_msg": true },
+    { "id": "street", "type": "text", "label": "Rua" },
+    { "id": "number", "type": "number", "label": "Numero" },
+    { "id": "adjunct", "type": "text", "label": "Complemento" },
+    { "id": "district", "type": "text", "label": "Bairro" },
+    { "id": "city", "type": "text", "label": "Cidade" }
   ]
 }

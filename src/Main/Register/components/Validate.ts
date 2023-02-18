@@ -9,6 +9,9 @@ export function vPassword(tx: string) {
 }
 
 export function vCheckPassword(tx: string, prev: string) {
-  return tx == prev
+  return tx == prev;
 }
-
+export function vCEP(tx: string) {
+  const regex = /^\d{8}$/;
+  return regex.test(tx);
+}
