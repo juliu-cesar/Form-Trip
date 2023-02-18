@@ -1,17 +1,19 @@
-export function vEmail(tx: string) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  return regex.test(tx);
-}
+export const Validate = {
+  email: (tx: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return regex.test(tx);
+  },
 
-export function vPassword(tx: string) {
-  const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(.{8,})$/;
-  return regex.test(tx);
-}
+  password: (tx: string) => {
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(.{8,})$/;
+    return regex.test(tx);
+  },
 
-export function vCheckPassword(tx: string, prev: string) {
-  return tx == prev;
-}
-export function vCEP(tx: string) {
-  const regex = /^\d{8}$/;
-  return regex.test(tx);
-}
+  password_2: (tx: string, prev: string) => {
+    return tx == prev;
+  },
+  CEP: (tx: string) => {
+    const regex = /^\d{8}$/;
+    return regex.test(tx);
+  },
+};

@@ -36,7 +36,7 @@ export const StyledForm = styled.form`
     width: 25px;
     height: 25px;
     top: 26px;
-    right: 10px;
+    right: 16px;
     border-radius: 50%;
     opacity: 0;
     display: flex;

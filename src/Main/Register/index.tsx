@@ -60,7 +60,11 @@ export default function Register() {
                   }}
                 />
                 {allStates[index].trim() != "" && e.show_msg && (
-                  <DisplayError state={allStates} index={index} />
+                  <DisplayError
+                    state={allStates}
+                    id={e.id}
+                    index={index}
+                  />
                 )}
               </div>
             );
