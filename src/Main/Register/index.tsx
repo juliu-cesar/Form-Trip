@@ -2,8 +2,8 @@ import { useState } from "react";
 import { StyledButtons } from "../components/StyledButtons";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledRegister } from "./components/StyledRegister";
-import FormLogin from "./FormLogin";
-import FormRegister from "./FormRegister";
+import FormLogin from "./components/FormLogin";
+import FormRegister from "./components/FormRegister";
 
 export default function Register() {
   const [register, setRegister] = useState(true);

@@ -1,6 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Validate } from "./Validate";
-import config from "../../../../../config.json";
 import { StyledMsg } from "./StyledMsg";
 import { IState } from "./IState";
 

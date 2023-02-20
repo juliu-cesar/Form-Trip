@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { StyledForm } from "../../components/StyledForm";
-import config from "../../../../config.json";
+import { StyledForm } from "../../../components/StyledForm";
+import config from "@/config.json";
 import InputForm from "./components/InputForm";
 
 export default function FormRegister() {
@@ -71,8 +71,8 @@ export default function FormRegister() {
         <div>
           <label htmlFor="state">Estado</label>
           <select name="state" id="state">
-            {config.states.map((e) => {
-              return <option value={e.uf}>{e.name}</option>;
+            {config.states.map((e, i) => {
+              return <option key={i} value={e.uf}>{e.name}</option>;
             })}
           </select>
         </div>

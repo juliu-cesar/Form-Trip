@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { StyledForm } from "../../components/StyledForm";
-import config from "../../../../config.json";
+import { StyledForm } from "../../../components/StyledForm";
+import config from "@/config.json";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");

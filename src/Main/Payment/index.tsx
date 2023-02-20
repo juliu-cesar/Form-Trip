@@ -1,30 +1,41 @@
+import { useState } from "react";
 import { StyledButtons } from "../components/StyledButtons";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledForm } from "../components/StyledForm";
+import BankSlip from "./components/BankSlip";
+import CreditCard from "./components/CreditCard";
+import Pix from "./components/Pix";
 import { StyledPayment } from "./components/StyledPayment";
 
 export default function Payment() {
+  const [PaymentForm, setPaymentForm] = useState(1);
+
+  function selectPayment(num: number) {
+    let buttons = document.querySelectorAll(
+      "#buttons_payment button"
+    ) as NodeListOf<HTMLElement>;
+    buttons.forEach((el, i) => {
+      i == num ? el.classList.add("select") : el.classList.remove("select");
+    });
+    setPaymentForm(num)
+  }
   return (
     <StyledPayment>
       <StyledContainer Border="color1">
-        <StyledButtons>
-          <button className="">Pix</button>
-          <button className="select">Cartão</button>
-          <button className="">Boleto</button>
+        <StyledButtons id="buttons_payment">
+          <button onClick={() => selectPayment(0)} className="">
+            Pix
+          </button>
+          <button onClick={() => selectPayment(1)} className="select">
+            Cartão
+          </button>
+          <button onClick={() => selectPayment(2)} className="">
+            Boleto
+          </button>
         </StyledButtons>
-        <StyledForm id="Payment">
-          <input id="Name" type="text" placeholder="Nome do Titular" />
-          <input id="CPF" type="number" placeholder="CPF do Titular" />
-          <input
-            id="Card_number"
-            type="number"
-            placeholder="Numero do cartão"
-          />
-          <div className="Inline">
-              <input id="card_date" type="number" placeholder="MM/AA" />
-              <input id="CVV" type="number" placeholder="CVV" />
-          </div>
-        </StyledForm>
+        {PaymentForm == 0 && <Pix />}
+        {PaymentForm == 1 && <CreditCard />}
+        {PaymentForm == 2 && <BankSlip />}
       </StyledContainer>
     </StyledPayment>
   );
