@@ -16,28 +16,27 @@ export default function Register() {
   const [adjunct, setAdjunct] = useState("");
   const [district, setDistrict] = useState("");
   const [city, setCity] = useState("");
-  const allStates = [
-    email,
-    password,
-    password_2,
-    CEP,
-    street,
-    number,
-    adjunct,
-    district,
-    city,
-  ];
-  const allSetStates = [
-    setEmail,
-    setPassword,
-    setPassword_2,
-    setCEP,
-    setStreet,
-    setNumber,
-    setAdjunct,
-    setDistrict,
-    setCity,
-  ];
+  const [emailMsg, setEmailMsg] = useState(false);
+  const [passMsg, setPassMsg] = useState(false);
+  const [passMsg_2, setPassMsg_2] = useState(false);
+  const [CEPMsg, setCEPMsg] = useState(false);
+  const allStates = {
+    email: { state: email, set: setEmail },
+    password: { state: password, set: setPassword },
+    password_2: { state: password_2, set: setPassword_2 },
+    CEP: { state: CEP, set: setCEP },
+    street: { state: street, set: setStreet },
+    number: { state: number, set: setNumber },
+    adjunct: { state: adjunct, set: setAdjunct },
+    district: { state: district, set: setDistrict },
+    city: { state: city, set: setCity },
+  };
+  const allMsg = {
+    email: { state: emailMsg, set: setEmailMsg },
+    password: { state: passMsg, set: setPassMsg },
+    password_2: { state: passMsg_2, set: setPassMsg_2 },
+    CEP: { state: CEPMsg, set: setCEPMsg },
+  };
 
   return (
     <StyledRegister>
@@ -54,18 +53,21 @@ export default function Register() {
                 <input
                   id={e.id}
                   type={e.type}
-                  value={allStates[index]}
-                  onChange={(e) => {
-                    allSetStates[index](e.target.value);
+                  value={allStates[e.id as keyof typeof allStates].state}
+                  onChange={(eChange) => {
+                    allStates[e.id as keyof typeof allStates].set(
+                      eChange.target.value.trim()
+                    );
+                  }}
+                  onFocus={() => {
+                    allMsg[e.id as keyof typeof allMsg].set(true);
+                  }}
+                  onBlur={() => {
+                    allMsg[e.id as keyof typeof allMsg].set(false);
                   }}
                 />
-                {allStates[index].trim() != "" && e.show_msg && (
-                  <DisplayError
-                    state={allStates}
-                    id={e.id}
-                    msg={e.err_msg}
-                    index={index}
-                  />
+                {allMsg[e.id as keyof typeof allMsg]?.state && (
+                  <DisplayError state={allStates} id={e.id} msg={e.err_msg} />
                 )}
               </div>
             );

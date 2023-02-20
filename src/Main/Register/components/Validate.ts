@@ -39,7 +39,7 @@ export const Validate = {
     let aClass: string[] = [];
 
     password_2!.forEach((e, i) => {
-      if (tx == prev) {
+      if (tx == prev && tx.trim() != "") {
         aClass.push(e.class);
       } else {
         aClass.slice(aClass.indexOf(e.class));
@@ -48,7 +48,7 @@ export const Validate = {
     return aClass;
   },
   CEP: (tx: string) => {
-    let CEP = config.form_register[2].err_msg;
+    let CEP = config.form_register[3].err_msg;
     const regex = [/^\d{8}$/];
     let aClass: string[] = [];
 
