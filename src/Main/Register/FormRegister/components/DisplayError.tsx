@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Validate } from "./Validate";
-import config from "../../../../config.json";
+import config from "../../../../../config.json";
 import { StyledMsg } from "./StyledMsg";
 import { IState } from "./IState";
 
@@ -47,8 +47,6 @@ export default function DisplayError({ state, id, msg }: Props) {
     allP.forEach((e) => {
       e.classList.remove("green");
     });
-    console.log(allValidation);
-    
     allValidation.forEach((eV) => {
       let element = document.querySelector(`.${eV}`) as HTMLElement;
       if (!element) return;

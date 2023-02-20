@@ -23,17 +23,16 @@ export const StyledForm = styled.form`
     margin-top: 2px;
     border: unset;
     border-bottom: 3px solid ${({ theme }) => theme.color1};
+    option{
+      color: #333;
+    }
     ::-webkit-input-placeholder{
       color: ${({ theme }) => theme.text_color};
     }
     ::-moz-placeholder{
       color: ${({ theme }) => theme.text_color};
     }
-  }
-
-
-
-  
+  }  
   .Inline{
     display: grid;
     grid-template-columns: 1fr 1fr;
