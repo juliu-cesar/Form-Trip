@@ -1,41 +1,38 @@
 import { useEffect, useState } from "react";
-import { Validate } from "./Validate";
+import { RegisterValidate } from "./RegisterValidate";
 import { StyledMsg } from "./StyledMsg";
 import { IState } from "./IState";
 
 interface Props {
   state: IState;
   id: string;
-  msg:
-    | {
-        msg: string;
-        class: string;
-      }[]
-    | undefined;
+  msg?: {
+    msg: string;
+    class: string;
+  }[];
 }
 
 export default function DisplayError({ state, id, msg }: Props) {
   const [borderColor, setBorderColor] = useState("red");
 
   useEffect(() => {
-    let aValidate = Validate[id as keyof typeof Validate](
+    let aValidate = RegisterValidate[id as keyof typeof RegisterValidate](
       state[id as keyof typeof state].state,
       state["password"].state
     );
     if (aValidate.length == msg!.length) {
       setBorderColor("green");
-    }
-    else{
+    } else {
       setBorderColor("red");
     }
-    opacity(1);
+    setTimeout(() => {
+      opacity(1);      
+    }, 50);
     clearAndSelect(aValidate);
   }, [state[id as keyof typeof state].state]);
 
   function opacity(num: number) {
-    let elErr = document.querySelector(
-      `[data-msg='err-${id}']`
-    ) as HTMLElement;
+    let elErr = document.querySelector(`[data-msg='err-${id}']`) as HTMLElement;
     if (!elErr) return;
     elErr.style.opacity = String(num);
   }

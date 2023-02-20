@@ -9,7 +9,7 @@ export const StyledMsg = styled.span<{
   opacity: 0;
   border: 1px solid ${({ theme, Border_color }) => theme[Border_color]};
   border-radius: 5px;
-  transition: all 0.5s;
+  transition: opacity .3s;
   p {
     color: ${({ theme }) => theme.red};
     font-size: 13px;

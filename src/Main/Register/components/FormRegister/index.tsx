@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyledForm } from "../../../components/StyledForm";
 import config from "@/config.json";
 import InputForm from "./components/InputForm";
+import { StyledSubmitButton } from "@/src/Main/components/StyledSubmitButton";
 
 export default function FormRegister() {
   const [email, setEmail] = useState("");
@@ -77,7 +78,7 @@ export default function FormRegister() {
           </select>
         </div>
       </div>
-      <button type="submit">Cadastrar</button>
+      <StyledSubmitButton type="submit">Cadastrar</StyledSubmitButton>
     </StyledForm>
   );
 }

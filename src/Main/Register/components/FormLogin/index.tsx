@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyledForm } from "../../../components/StyledForm";
 import config from "@/config.json";
+import { StyledSubmitButton } from "@/src/Main/components/StyledSubmitButton";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ export default function FormLogin() {
           }}
         />
       </div>
-      <button type="submit">Login</button>
+      <StyledSubmitButton type="submit">Login</StyledSubmitButton>
     </StyledForm>
   );
 }

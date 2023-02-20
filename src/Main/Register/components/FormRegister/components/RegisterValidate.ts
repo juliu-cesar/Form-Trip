@@ -1,6 +1,6 @@
 import config from "@/config.json";
 
-export const Validate = {
+export const RegisterValidate = {
   email: (tx: string) => {
     let email = config.form_register[0].err_msg;
     const regex = [/^[^\s@]+@/, /@[^\s@]+\.[^\s@]{2,}$/];
