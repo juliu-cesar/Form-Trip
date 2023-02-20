@@ -38,3 +38,21 @@ export interface IState {
     set: Dispatch<SetStateAction<string>>;
   };
 }
+export interface IMsg {
+  email: {
+    state: boolean;
+    set: Dispatch<SetStateAction<boolean>>;
+  };
+  password: {
+    state: boolean;
+    set: Dispatch<SetStateAction<boolean>>;
+  };
+  password_2: {
+    state: boolean;
+    set: Dispatch<SetStateAction<boolean>>;
+  };
+  CEP: {
+    state: boolean;
+    set: Dispatch<SetStateAction<boolean>>;
+  };
+}

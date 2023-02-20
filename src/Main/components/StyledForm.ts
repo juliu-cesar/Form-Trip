@@ -8,7 +8,6 @@ export const StyledForm = styled.form`
     position: relative;
     display: flex;
     flex-direction: column; 
-    margin-bottom: 10px;
   }
   label {
     font-size: 15px;
@@ -21,6 +20,7 @@ export const StyledForm = styled.form`
     height: 40px;
     padding-left: 5px;
     margin-top: 2px;
+    margin-bottom: 10px;
     border: unset;
     border-bottom: 3px solid ${({ theme }) => theme.color1};
     option{

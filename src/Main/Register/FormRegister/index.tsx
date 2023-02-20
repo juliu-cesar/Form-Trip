@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyledForm } from "../../components/StyledForm";
 import config from "../../../../config.json";
-import DisplayError from "./components/DisplayError";
+import InputForm from "./components/InputForm";
 
 export default function FormRegister() {
   const [email, setEmail] = useState("");
@@ -36,43 +36,46 @@ export default function FormRegister() {
   };
 
   return (
-    <StyledForm id="Account" onSubmit={(e)=>{
-      e.preventDefault();
-    }}>
+    <StyledForm
+      id="Account"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       {config.form_register.map((e, index) => {
-        return (
-          <div key={index}>
-            <label htmlFor={e.id}>{e.label}</label>
-            <input
-              id={e.id}
-              type={e.type}
-              value={allStates[e.id as keyof typeof allStates].state}
-              onChange={(eChange) => {
-                allStates[e.id as keyof typeof allStates].set(
-                  eChange.target.value.trim()
-                );
-              }}
-              onFocus={() => {
-                allMsg[e.id as keyof typeof allMsg]?.set(true);
-              }}
-              onBlur={() => {
-                allMsg[e.id as keyof typeof allMsg]?.set(false);
-              }}
+        if (index <= 2) {
+          return (
+            <InputForm
+              e={e}
+              key={index}
+              allStates={allStates}
+              allMsg={allMsg}
             />
-            {allMsg[e.id as keyof typeof allMsg]?.state && (
-              <DisplayError state={allStates} id={e.id} msg={e.err_msg} />
-            )}
-          </div>
-        );
+          );
+        }
       })}
-
-      <div>
-        <label htmlFor="state">Estado</label>
-        <select name="state" id="state">
-          {config.states.map((e) => {
-            return <option value={e.uf}>{e.name}</option>;
-          })}
-        </select>
+      <div className="address">
+        <h4>Endereço</h4>
+        {config.form_register.map((e, index) => {
+          if (index >= 3) {
+            return (
+              <InputForm
+                e={e}
+                key={index}
+                allStates={allStates}
+                allMsg={allMsg}
+              />
+            );
+          }
+        })}
+        <div>
+          <label htmlFor="state">Estado</label>
+          <select name="state" id="state">
+            {config.states.map((e) => {
+              return <option value={e.uf}>{e.name}</option>;
+            })}
+          </select>
+        </div>
       </div>
       <button type="submit">Cadastrar</button>
     </StyledForm>

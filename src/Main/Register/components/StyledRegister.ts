@@ -5,7 +5,7 @@ export const StyledRegister = styled.div`
   margin-bottom: 25px; 
   .address {
     position: relative;
-    padding: 15px;
+    padding: 20px 15px;
     margin: 15px 0;
     display: flex;
     flex-direction: column;
@@ -19,20 +19,6 @@ export const StyledRegister = styled.div`
       padding: 2px 7px;
       font-size: 17px;
       font-weight: 500;
-    }
-    .Inline {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 65% calc(35% - 10px);
-      gap: 10px;
-      div {
-        display: flex;
-        flex-direction: column;
-      }
-      #state {
-        font-size: 14px;
-        font-weight: 500;
-      }
     }
   }
   button[type='submit']{

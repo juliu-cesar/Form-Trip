@@ -8,17 +8,35 @@ import FormRegister from "./FormRegister";
 export default function Register() {
   const [register, setRegister] = useState(true);
 
-  function toggleRegister(num: number){
-    num == 0 ? setRegister(true) : setRegister(false)
+  function toggleRegister(num: number) {
+    let register = document.querySelector("#btn_register") as HTMLElement;
+    let login = document.querySelector("#btn_login") as HTMLElement;
+    if (num == 0) {
+      login.classList.remove("select");
+      register.classList.add("select");
+      setRegister(true);
+    } else {
+      register.classList.remove("select");
+      login.classList.add("select");
+      setRegister(false);
+    }
   }
   return (
     <StyledRegister>
       <StyledContainer Border="color1">
         <StyledButtons>
-          <button onClick={()=>toggleRegister(1)} className="">Login</button>
-          <button onClick={()=>toggleRegister(0)} className="select">Cadastrar</button>
+          <button id="btn_login" onClick={() => toggleRegister(1)} className="">
+            Login
+          </button>
+          <button
+            id="btn_register"
+            onClick={() => toggleRegister(0)}
+            className="select"
+          >
+            Cadastrar
+          </button>
         </StyledButtons>
-        {register ? <FormRegister/> : <FormLogin/>}        
+        {register ? <FormRegister /> : <FormLogin />}
       </StyledContainer>
     </StyledRegister>
   );
