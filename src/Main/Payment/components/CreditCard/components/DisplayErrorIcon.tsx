@@ -8,32 +8,31 @@ interface Props {
 }
 
 export default function DisplayErrorIcon({ state, id }: Props) {
-  const [showIcon, setShowIcon] = useState(false);
+  const [showIconOk, setShowIconOk] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
     let Validate = PaymentValidade[id as keyof typeof PaymentValidade](state);
+    setOpacity(1)
 
     if (Validate) {
-      clearAndSelect(0,1)
-    }else{
-      clearAndSelect(1,0)
+      setShowIconOk(true);
+    } else {
+      setShowIconOk(false);
     }
   }, [state]);
-  function clearAndSelect(n1: number, n2: number) {
-    let elErr = document.querySelector(`.errIcon_${id}`) as HTMLElement;
-    let elOk = document.querySelector(`.okIcon_${id}`) as HTMLElement;
 
-    elErr.style.opacity = String(n1);
-    elOk.style.opacity = String(n2);
-  }
   return (
     <>
-      <StyledErrorIcon className={`errIcon_${id}`}>
-        <img src="img/icon/close.svg" />
-      </StyledErrorIcon>
-      <StyledErrorIcon className={`okIcon_${id}`}>
-        <img src="img/icon/done.svg" />
-      </StyledErrorIcon>
+      {showIconOk ? (
+        <StyledErrorIcon opacity={opacity}>
+          <img src="img/icon/done.svg" />
+        </StyledErrorIcon>
+      ) : (
+        <StyledErrorIcon opacity={opacity}>
+          <img src="img/icon/close.svg" />
+        </StyledErrorIcon>
+      )}
     </>
   );
 }

@@ -10,8 +10,19 @@ export default function CreditCard() {
   const [monthYear, setMonthYear] = useState("");
   const [CVV, setCVV] = useState("");
 
+  const [nameIcon, setNameIcon] = useState(false);
+  const [cpfIcon, setCpfIcon] = useState(false);
+  const [cardNumberIcon, setCardNumberIcon] = useState(false);
+  const [monthYearIcon, setMonthYearIcon] = useState(false);
+  const [CVVIcon, setCVVIcon] = useState(false);
+
   return (
-    <StyledForm id="Payment">
+    <StyledForm
+      id="Payment"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <div>
         <input
           id="name"
@@ -21,45 +32,98 @@ export default function CreditCard() {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          onFocus={() => {
+            setNameIcon(true);
+          }}
+          onBlur={() => {
+            setTimeout(() => {
+              setNameIcon(false);
+            }, 50);
+          }}
         />
-        <DisplayErrorIcon state={name} id={"name"} />
+        {nameIcon && <DisplayErrorIcon state={name} id={"name"} />}
       </div>
       <div>
         <input
           id="CPF"
-          type="number"
+          type="text"
           placeholder="CPF do Titular"
           value={CPF}
           onChange={(e) => {
-            setCPF(e.target.value);
+            let tx = e.target.value.replace(/[^\d]+/g, "");
+            if (tx.length == 11) {
+              let regex = /(\d{3})(\d{3})(\d{3})(\d{2})/;
+              tx = tx.replace(regex, "$1.$2.$3-$4");
+              setCPF(tx);
+            } else {
+              if (tx.length > 11) return;
+              setCPF(tx);
+            }
+          }}
+          onFocus={() => {
+            setCpfIcon(true);
+          }}
+          onBlur={() => {
+            setCpfIcon(false);
           }}
         />
-        <DisplayErrorIcon state={CPF} id={"CPF"} />
+        {cpfIcon && <DisplayErrorIcon state={CPF} id={"CPF"} />}
       </div>
       <div>
         <input
           id="card_number"
-          type="number"
+          type="text"
           placeholder="Numero do cartão"
           value={cardNumber}
           onChange={(e) => {
-            setCardNumber(e.target.value);
+            let tx = e.target.value.replace(/[^\d]+/g, "");
+            if (tx.length == 16) {
+              let regex = /(\d{4})(\d{4})(\d{4})(\d{4})/;
+              tx = tx.replace(regex, "$1 $2 $3 $4");
+              setCardNumber(tx);
+            } else {
+              if (tx.length > 16) return;
+              setCardNumber(tx);
+            }
+          }}
+          onFocus={() => {
+            setCardNumberIcon(true);
+          }}
+          onBlur={() => {
+            setCardNumberIcon(false);
           }}
         />
-        <DisplayErrorIcon state={cardNumber} id={"cardNumber"} />
+        {cardNumberIcon && (
+          <DisplayErrorIcon state={cardNumber} id={"cardNumber"} />
+        )}
       </div>
       <div className="Inline">
         <div>
           <input
             id="card_date"
-            type="number"
+            type="text"
             placeholder="MM/AA"
             value={monthYear}
             onChange={(e) => {
-              setMonthYear(e.target.value);
+              let tx = e.target.value.replace(/[^\d]+/g, "");
+              if (tx.length == 4) {
+                tx = tx.replace(/^(\d{2})(\d{2})/, "$1/$2");
+                setMonthYear(tx);
+              } else {
+                if (tx.length > 4) return;
+                setMonthYear(tx);
+              }
+            }}
+            onFocus={() => {
+              setMonthYearIcon(true);
+            }}
+            onBlur={() => {
+              setMonthYearIcon(false);
             }}
           />
-          <DisplayErrorIcon state={monthYear} id={"monthYear"} />
+          {monthYearIcon && (
+            <DisplayErrorIcon state={monthYear} id={"monthYear"} />
+          )}
         </div>
         <div>
           <input
@@ -68,10 +132,18 @@ export default function CreditCard() {
             placeholder="CVV"
             value={CVV}
             onChange={(e) => {
-              setCVV(e.target.value);
+              let tx = e.target.value;
+              if (tx.length > 3) return;
+              setCVV(tx);
+            }}
+            onFocus={() => {
+              setCVVIcon(true);
+            }}
+            onBlur={() => {
+              setCVVIcon(false);
             }}
           />
-          <DisplayErrorIcon state={CVV} id={"CVV"} />
+          {CVVIcon && <DisplayErrorIcon state={CVV} id={"CVV"} />}
         </div>
       </div>
       <StyledSubmitButton type="submit">Salvar Cartão</StyledSubmitButton>

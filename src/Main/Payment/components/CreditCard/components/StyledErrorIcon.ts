@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-export const StyledErrorIcon = styled.span`
+export const StyledErrorIcon = styled.span<{
+  opacity: number
+}>`
 position: absolute;
 background-color: ${({ theme }) => theme.text_color};
-top: 10px;
+top: 7px;
 right: 20px;
 width: 25px;
 height: 25px;
+opacity: ${({ opacity }) => opacity};
 border-radius: 50%;
-opacity: 0;
 display: flex;
 justify-content: center;
 align-items: center;
