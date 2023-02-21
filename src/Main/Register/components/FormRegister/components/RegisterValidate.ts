@@ -49,6 +49,7 @@ export const RegisterValidate = {
   },
   CEP: (tx: string) => {
     let CEP = config.form_register[3].err_msg;
+    tx = tx.replace(/[^\d]+/g, "");
     const regex = [/^\d{8}$/];
     let aClass: string[] = [];
 

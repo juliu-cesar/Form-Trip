@@ -3,9 +3,9 @@ import { StyledForm } from "@/src/Main/components/StyledForm";
 import { StyledSubmitButton } from "@/src/Main/components/StyledSubmitButton";
 import DisplayErrorIcon from "./components/DisplayErrorIcon";
 import { PaymentValidade } from "./components/PaymentValidade";
-import { StyledErrorForm } from "./components/StyledErrorForm";
 import { StyledCreditCard } from "./components/StyledCreditCard";
 import { StyledFormCard } from "./components/StyledFormCard";
+import { StyledErrorForm } from "@/src/Main/components/StyledErrorForm";
 
 interface Props {
   display: string;
@@ -68,7 +68,7 @@ export default function CreditCard({ display }: Props) {
         >
           {showErrorForm && (
             <StyledErrorForm id="Err_PaymentForm">
-              Por favor, preencha corretamente os campos.
+              Por favor, preencha os campos.
             </StyledErrorForm>
           )}
           <div>

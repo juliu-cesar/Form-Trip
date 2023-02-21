@@ -21,4 +21,18 @@ export const StyledRegister = styled.div`
       font-weight: 500;
     }
   }
+  #logged{
+    div{
+      padding: 10px 15px;
+    }
+    h3{
+      font-size: 19px;
+      line-height: 22px;
+    }
+    p{
+      margin-top: 5px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
 `;

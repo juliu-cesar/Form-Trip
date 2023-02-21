@@ -24,7 +24,7 @@ export default function InputForm({ e, allStates, allMsg }: Props) {
         value={allStates[e.id as keyof typeof allStates].state}
         onChange={(eChange) => {
           allStates[e.id as keyof typeof allStates].set(
-            eChange.target.value.trim()
+            eChange.target.value
           );
         }}
         onFocus={() => {

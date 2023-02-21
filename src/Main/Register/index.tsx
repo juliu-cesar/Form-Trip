@@ -4,9 +4,12 @@ import { StyledContainer } from "../components/StyledContainer";
 import { StyledRegister } from "./components/StyledRegister";
 import FormLogin from "./components/FormLogin";
 import FormRegister from "./components/FormRegister";
+import { StyledFrame } from "../components/StyledFrame";
 
 export default function Register() {
   const [register, setRegister] = useState(true);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   function toggleRegister(num: number) {
     let register = document.querySelector("#btn_register") as HTMLElement;
@@ -36,7 +39,27 @@ export default function Register() {
             Cadastrar
           </button>
         </StyledButtons>
-        {register ? <FormRegister /> : <FormLogin />}
+        {email == "" ? (
+          <>
+            <FormRegister
+              display={register ? "block" : "none"}
+              setEmailRL={setEmail}
+              setMessage={setMessage}
+            />
+            <FormLogin
+              display={register ? "none" : "block"}
+              setEmailRL={setEmail}
+              setMessage={setMessage}
+            />
+          </>
+        ) : (
+          <div id="logged">
+            <StyledFrame Border="color1">
+              <h3>{message}</h3>
+              <p>{email}</p>
+            </StyledFrame>
+          </div>
+        )}
       </StyledContainer>
     </StyledRegister>
   );
