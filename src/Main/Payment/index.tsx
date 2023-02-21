@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyledButtons } from "../components/StyledButtons";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledForm } from "../components/StyledForm";
@@ -9,6 +9,9 @@ import { StyledPayment } from "./components/StyledPayment";
 
 export default function Payment() {
   const [PaymentForm, setPaymentForm] = useState(1);
+  const [display, setDisplay] = useState("flex");
+
+  useEffect(() => {}, []);
 
   function selectPayment(num: number) {
     let buttons = document.querySelectorAll(
@@ -17,7 +20,8 @@ export default function Payment() {
     buttons.forEach((el, i) => {
       i == num ? el.classList.add("select") : el.classList.remove("select");
     });
-    setPaymentForm(num)
+    num == 1 ? setDisplay("block") : setDisplay("none");
+    setPaymentForm(num);
   }
   return (
     <StyledPayment>
@@ -33,8 +37,8 @@ export default function Payment() {
             Boleto
           </button>
         </StyledButtons>
+        <CreditCard display={display} />
         {PaymentForm == 0 && <Pix />}
-        {PaymentForm == 1 && <CreditCard />}
         {PaymentForm == 2 && <BankSlip />}
       </StyledContainer>
     </StyledPayment>
