@@ -11,12 +11,8 @@ export const StyledCheckin = styled.div`
   .check-in {
     border: 2px solid ${({ theme }) => theme.color2};
     border-radius: 10px;
-    display: grid;
-    grid-template-areas:
-      "auto auto"
-      "amount amount";
-    .card_checkin,
-    .card_checkout,
+    display: flex;
+    flex-direction: column;
     .card_amount {
       height: 60px;
       display: flex;

@@ -6,6 +6,8 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../styles/CSSReset";
 import CarouselProvider from "@/src/Carousel/components/CarouselProvider";
+import PtBr from "antd/locale/pt_BR";
+import { ConfigProvider } from "antd";
 
 const theme = {
   light: {
@@ -54,7 +56,9 @@ function ProviderWrapper(props: any) {
 export default function App(props: any) {
   return (
     <ProviderWrapper>
-      <MyApp {...props} />
+      <ConfigProvider locale={PtBr}>
+        <MyApp {...props} />
+      </ConfigProvider>
     </ProviderWrapper>
   );
 }
