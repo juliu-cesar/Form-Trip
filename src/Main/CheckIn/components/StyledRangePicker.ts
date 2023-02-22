@@ -14,12 +14,10 @@ export const StyledRangePicker = styled.div`
       height: 60px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       input {
         color: ${({ theme }) => theme.text_color};
         width: 90%;
-        /* height: 55px; */
         padding: 0 15px;
         font-family: "Montserrat", sans-serif;
         font-size: 17px;

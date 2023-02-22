@@ -14,18 +14,22 @@ export const StyledCheckin = styled.div`
     display: flex;
     flex-direction: column;
     .card_amount {
+      position: relative;
+      border-top: 2px solid ${({ theme }) => theme.color2};
       height: 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-    .card_checkin {
-      border-right: 2px solid ${({ theme }) => theme.color2};
-    }
-    .card_amount {
-      grid-area: amount;
-      border-top: 2px solid ${({ theme }) => theme.color2};
+      .btn_amount{
+        background-color: unset;
+        color: ${({ theme }) => theme.text_color};
+        border: unset;
+        width: 90%;
+        height: 90%;
+        font-size: 19px;
+        font-weight: 500;
+      }
     }
   }
   .Inline{

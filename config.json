@@ -13,7 +13,12 @@
           "bed_queen": 0,
           "bed_single": 2
         }
-      ]
+      ],
+      "price": {
+        "priceDay": 450,
+        "serviceCharge": 170
+      },
+      "amountPeople": 4
     },
     {
       "url": "hut-lake-mountain",
@@ -23,7 +28,12 @@
           "bed_queen": 1,
           "bed_single": 1
         }
-      ]
+      ],
+      "price": {
+        "priceDay": 510,
+        "serviceCharge": 230
+      },
+      "amountPeople": 3
     },
     {
       "url": "hut-river",
@@ -43,7 +53,12 @@
           "bed_queen": 0,
           "bed_single": 2
         }
-      ]
+      ],
+      "price": {
+        "priceDay": 800,
+        "serviceCharge": 190
+      },
+      "amountPeople": 6
     },
     {
       "url": "hut-snow",
@@ -53,7 +68,12 @@
           "bed_queen": 2,
           "bed_single": 0
         }
-      ]
+      ],
+      "price": {
+        "priceDay": 620,
+        "serviceCharge": 250
+      },
+      "amountPeople": 2
     }
   ],
   "form_register": [

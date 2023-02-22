@@ -11,14 +11,7 @@ export const StyledCarousel = styled.div`
     height: 40px;
     padding: 5px;
     border-radius: 50%;
-    transition: all .4s;
-    svg{
-      width: 100%;
-      height: 100%;
-      path{
-        fill: ${({theme})=> theme.text_color};
-      }
-    }
+    transition: all .4s;    
     :hover{
       outline: 2px solid ${({theme})=> theme.text_color};
     }
