@@ -4,76 +4,115 @@
       "url": "hut-forest",
       "bedrooms": [
         {
-          "beds": "1 cama de casal",
-          "bed_queen": 1,
-          "bed_single": 0
+          "msg": "1 cama de casal",
+          "beds": ["bed_queen"]
         },
         {
-          "beds": "2 camas de solteiro",
-          "bed_queen": 0,
-          "bed_single": 2
+          "msg": "2 camas de solteiro",
+          "beds": ["bed_single", "bed_single"]
         }
       ],
+      "bathroom": 1,
+      "totalBeds": 3,
+      "amountPeople": 4,
       "price": {
         "priceDay": 450,
         "serviceCharge": 170
       },
-      "amountPeople": 4
+      "amenities": [
+        "Vista para o rio",
+        "Café da manhã",
+        "TV",
+        "Ar-condicionado de janela",
+        "Pier dentro do rio",
+        "Maquina de lavar",
+        "Local para redes na varanda"
+      ]
     },
     {
       "url": "hut-lake-mountain",
       "bedrooms": [
         {
-          "beds": "1 cama de casal, 1 cama de solteiro",
-          "bed_queen": 1,
-          "bed_single": 1
+          "msg": "1 cama de casal, 1 cama de solteiro",
+          "beds": ["bed_queen", "bed_single"]
         }
       ],
+      "bathroom": 1,
+      "totalBeds": 2,
+      "amountPeople": 3,
       "price": {
         "priceDay": 510,
         "serviceCharge": 230
       },
-      "amountPeople": 3
+      "amenities": [
+        "Vista para o lago",
+        "Lareira",
+        "Fogueira ao ar livre",
+        "Barco a remo para navegar no lago",
+        "Local para jantar ao ar livre",
+        "Trilha na floresta",
+        "Vista para montanha",
+        "Local para barracas"
+      ]
     },
     {
       "url": "hut-river",
       "bedrooms": [
         {
-          "beds": "1 cama de casal",
-          "bed_queen": 1,
-          "bed_single": 0
+          "msg": "1 cama de casal",
+          "beds": ["bed_queen"]
         },
         {
-          "beds": "1 cama de casal",
-          "bed_queen": 1,
-          "bed_single": 0
+          "msg": "2 cama de casal",
+          "beds": ["bed_queen", "bed_queen"]
         },
         {
-          "beds": "2 camas de solteiro",
-          "bed_queen": 0,
-          "bed_single": 2
+          "msg": "2 camas de solteiro",
+          "beds": ["bed_single", "bed_single"]
         }
       ],
+      "bathroom": 2,
+      "totalBeds": 4,
+      "amountPeople": 8,
       "price": {
         "priceDay": 800,
         "serviceCharge": 190
       },
-      "amountPeople": 6
+      "amenities": [
+        "Vista para o rio",
+        "Vista para o floresta",
+        "Passeio de barco",
+        "Cozinha privativa",
+        "Sofa para 6 pessoas",
+        "TV",
+        "Trilha na floresta",
+        "Garagem coberta",
+        "Salão de jogos compartilhado"
+      ]
     },
     {
       "url": "hut-snow",
       "bedrooms": [
         {
-          "beds": "2 camas de casal",
-          "bed_queen": 2,
-          "bed_single": 0
+          "msg": "2 camas de casal",
+          "beds": ["bed_queen", "bed_queen"]
         }
       ],
+      "bathroom": 1,
+      "totalBeds": 2,
+      "amountPeople": 4,
       "price": {
         "priceDay": 620,
         "serviceCharge": 250
       },
-      "amountPeople": 2
+      "amenities": [
+        "Vista para o floresta",
+        "Lareira",
+        "Neve o ano todo",
+        "Aguá aquecida a lenha",
+        "Area para esquiar",
+        "Cozinha privativa"
+      ]
     }
   ],
   "form_register": [

@@ -30,8 +30,6 @@ export default function ButtonsAmount({
       <button
         onClick={() => {
           if (allValues == totalAmount) return;
-          console.log(allValues);
-          
           setState(state + 1)
         }}
       >

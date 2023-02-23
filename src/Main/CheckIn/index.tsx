@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledFrame } from "../components/StyledFrame";
 import { StyledCheckin } from "./components/StyledCheckin";
@@ -7,8 +7,10 @@ import { StyledRangePicker } from "./components/StyledRangePicker";
 import config from "@/config.json";
 import dayjs from "dayjs";
 import AmountOfPeople from "./components/AmountOfPeople";
+import { CarouselContext } from "@/src/Carousel/components/CarouselProvider";
 
 export default function CheckIn() {
+  const SelectHouse = useContext(CarouselContext);
   const [dateR, setDateR] = useState<any>();
   const [totalDays, setTotalDays] = useState(1);
   const [priceDay, setPriceDay] = useState(0);
@@ -18,17 +20,13 @@ export default function CheckIn() {
   const [aChild, setAChild] = useState(0);
   const [aBaby, setABaby] = useState(0);
   const amount = {
-    adult: {state: aAdult, set: setAAdult},
-    child: {state: aChild, set: setAChild},
-    baby: {state: aBaby, set: setABaby},
-  }
+    adult: { state: aAdult, set: setAAdult },
+    child: { state: aChild, set: setAChild },
+    baby: { state: aBaby, set: setABaby },
+  };
+  const [showCardAmount, setShowCardAmount] = useState(false);
 
   useEffect(() => {
-    let price = config.houses[0].price;
-
-    setPriceDay(price.priceDay);
-    setServiceCharge(price.serviceCharge);
-
     if (dateR) {
       let date1 = new Date(dateR[0].$d);
       let date2 = new Date(dateR[1].$d);
@@ -37,6 +35,15 @@ export default function CheckIn() {
       setTotalDays(diffInDays);
     }
   }, [dateR]);
+  useEffect(() => {
+    let price = config.houses[SelectHouse.index].price;
+
+    setAAdult(1);
+    setAChild(0);
+    setABaby(0);
+    setPriceDay(price.priceDay);
+    setServiceCharge(price.serviceCharge);
+  }, [SelectHouse.index]);
 
   return (
     <StyledCheckin>
@@ -60,8 +67,17 @@ export default function CheckIn() {
               />
             </StyledRangePicker>
             <div className="card_amount">
-              <button className="btn_amount">Adultos 0 - Crianças 0</button>
-              <AmountOfPeople amount={amount}/>
+              <button
+                className="btn_amount"
+                onClick={() =>
+                  showCardAmount
+                    ? setShowCardAmount(false)
+                    : setShowCardAmount(true)
+                }
+              >
+                Quantidade de pessoas {aAdult + aChild + aBaby}
+              </button>
+              {showCardAmount && <AmountOfPeople amount={amount} />}
             </div>
           </div>
         </StyledFrame>

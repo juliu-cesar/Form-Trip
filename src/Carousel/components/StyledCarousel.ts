@@ -7,11 +7,14 @@ export const StyledCarousel = styled.div`
   margin: auto;
   margin-bottom: 30px;
   button{
-    width: 45px;
-    height: 40px;
-    padding: 5px;
+    width: 50px;
+    height: 45px;
+    padding: 6px;
     border-radius: 50%;
-    transition: all .4s;    
+    transition: all .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     :hover{
       outline: 2px solid ${({theme})=> theme.text_color};
     }

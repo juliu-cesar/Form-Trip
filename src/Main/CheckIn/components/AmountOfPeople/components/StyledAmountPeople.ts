@@ -7,6 +7,7 @@ export const StyledAmountPeople = styled.div`
   top: 65px;
   left: calc(50% - 125px);
   width: 250px;
+  height: 165px;
   padding: 20px 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
@@ -14,7 +15,11 @@ export const StyledAmountPeople = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-
+  
+  animation-name: show;
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
   h4 {
     font-size: 17px;
     font-weight: 500;
@@ -55,5 +60,15 @@ export const StyledAmountPeople = styled.div`
     border-top: 2px solid;
     border-bottom: 2px solid;
     border-color: ${({ theme }) => theme.color2};
+  }
+  @keyframes show {
+    from {
+      /* transform: scaleY(0.5); */
+      height: 80px;
+    }
+    to {
+      /* transform: scaleY(1); */
+      height: 165px;
+    }
   }
 `;

@@ -17,12 +17,14 @@ export const StyledAmenities = styled.div`
   }
   .detail_Bedrooms {
     h4 {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 600;
     }
     p {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
+      line-height: 15px;
+      text-align: center;
     }
     span {
       display: flex;
