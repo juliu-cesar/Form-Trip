@@ -4,17 +4,17 @@ export const StyledForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  div{
+  .displayFlex div{
     position: relative;
     display: flex;
     flex-direction: column; 
-  }
+  } 
   label {
     font-size: 15px;
     font-weight: 600;
-  }
+  } 
   input,
-  select {
+  .select {
     background-color: unset;
     color: ${({ theme }) => theme.text_color};
     height: 40px;

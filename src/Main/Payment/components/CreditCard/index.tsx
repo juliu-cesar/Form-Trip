@@ -12,6 +12,15 @@ import { Select } from "antd";
 interface Props {
   display: string;
 }
+type Options = {
+  label: string;
+  options: [
+    {
+      label: string;
+      value: string;
+    }
+  ];
+}[];
 
 export default function CreditCard({ display }: Props) {
   const CardI = useContext(PriceContext);
@@ -28,21 +37,6 @@ export default function CreditCard({ display }: Props) {
   const [SaveCard, setSaveCard] = useState(false);
   const [showErrorForm, setShowErrorForm] = useState(false);
   let map = [""];
-
-  let option = [
-    <option value="r">Novo</option>,
-    <option value="n">New</option>,
-  ];
-  let options = [
-    {
-      value: "Hello world",
-      label: "Novo",
-    },
-    {
-      value: "Ola Mundo",
-      label: "New",
-    },
-  ];
 
   function ValidateAndSave() {
     let py = PaymentValidade;
@@ -62,6 +56,28 @@ export default function CreditCard({ display }: Props) {
       }, 5000);
     }
   }
+
+  let oN = [];
+  let oI = [];
+  for (let x = 1; x <= 10; x++) {
+    if (x <= 5) {
+      oN.push({
+        label: `${x} X R$ ${(CardI.TotalPrice / x).toFixed(2)} = R$ ${CardI.TotalPrice.toFixed(2)}`.replace(/\./g, ","),
+        value: x,
+      });
+    } else {
+      oI.push({
+        label: `${x} X R$ ${((CardI.TotalPrice * (x / 100 + 1)) / x).toFixed(
+          2
+        )} = R$ ${(CardI.TotalPrice * (x / 100 + 1)).toFixed(2)}`.replace(/\./g, ","),
+        value: x,
+      });
+    }
+  }
+  let options = [
+    { label: "Sem juros", options: oN },
+    { label: "Com juros", options: oI },
+  ];
 
   return (
     <StyledFormCard display={display}>
@@ -85,85 +101,87 @@ export default function CreditCard({ display }: Props) {
             ValidateAndSave();
           }}
         >
-          {showErrorForm && (
-            <StyledErrorForm id="Err_PaymentForm">
-              Por favor, preencha os campos.
-            </StyledErrorForm>
-          )}
-          <div>
-            <input
-              id="name"
-              type="text"
-              placeholder="Nome do Titular"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              onFocus={() => {
-                setNameIcon(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setNameIcon(false);
-                }, 50);
-              }}
-            />
-            {nameIcon && <DisplayErrorIcon state={name} id={"name"} />}
-          </div>
-          <div>
-            <input
-              id="CPF"
-              type="text"
-              placeholder="CPF do Titular"
-              value={CPF}
-              onChange={(e) => {
-                let tx = e.target.value.replace(/[^\d]+/g, "");
-                if (tx.length == 11) {
-                  let regex = /(\d{3})(\d{3})(\d{3})(\d{2})/;
-                  tx = tx.replace(regex, "$1.$2.$3-$4");
-                  setCPF(tx);
-                } else {
-                  if (tx.length > 11) return;
-                  setCPF(tx);
-                }
-              }}
-              onFocus={() => {
-                setCpfIcon(true);
-              }}
-              onBlur={() => {
-                setCpfIcon(false);
-              }}
-            />
-            {cpfIcon && <DisplayErrorIcon state={CPF} id={"CPF"} />}
-          </div>
-          <div>
-            <input
-              id="card_number"
-              type="text"
-              placeholder="Numero do cartão"
-              value={cardNumber}
-              onChange={(e) => {
-                let tx = e.target.value.replace(/[^\d]+/g, "");
-                if (tx.length == 16) {
-                  let regex = /(\d{4})(\d{4})(\d{4})(\d{4})/;
-                  tx = tx.replace(regex, "$1 $2 $3 $4");
-                  setCardNumber(tx);
-                } else {
-                  if (tx.length > 16) return;
-                  setCardNumber(tx);
-                }
-              }}
-              onFocus={() => {
-                setCardNumberIcon(true);
-              }}
-              onBlur={() => {
-                setCardNumberIcon(false);
-              }}
-            />
-            {cardNumberIcon && (
-              <DisplayErrorIcon state={cardNumber} id={"cardNumber"} />
+          <span className="displayFlex">
+            {showErrorForm && (
+              <StyledErrorForm id="Err_PaymentForm">
+                Por favor, preencha os campos.
+              </StyledErrorForm>
             )}
-          </div>
+            <div>
+              <input
+                id="name"
+                type="text"
+                placeholder="Nome do Titular"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                onFocus={() => {
+                  setNameIcon(true);
+                }}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setNameIcon(false);
+                  }, 50);
+                }}
+              />
+              {nameIcon && <DisplayErrorIcon state={name} id={"name"} />}
+            </div>
+            <div>
+              <input
+                id="CPF"
+                type="text"
+                placeholder="CPF do Titular"
+                value={CPF}
+                onChange={(e) => {
+                  let tx = e.target.value.replace(/[^\d]+/g, "");
+                  if (tx.length == 11) {
+                    let regex = /(\d{3})(\d{3})(\d{3})(\d{2})/;
+                    tx = tx.replace(regex, "$1.$2.$3-$4");
+                    setCPF(tx);
+                  } else {
+                    if (tx.length > 11) return;
+                    setCPF(tx);
+                  }
+                }}
+                onFocus={() => {
+                  setCpfIcon(true);
+                }}
+                onBlur={() => {
+                  setCpfIcon(false);
+                }}
+              />
+              {cpfIcon && <DisplayErrorIcon state={CPF} id={"CPF"} />}
+            </div>
+            <div>
+              <input
+                id="card_number"
+                type="text"
+                placeholder="Numero do cartão"
+                value={cardNumber}
+                onChange={(e) => {
+                  let tx = e.target.value.replace(/[^\d]+/g, "");
+                  if (tx.length == 16) {
+                    let regex = /(\d{4})(\d{4})(\d{4})(\d{4})/;
+                    tx = tx.replace(regex, "$1 $2 $3 $4");
+                    setCardNumber(tx);
+                  } else {
+                    if (tx.length > 16) return;
+                    setCardNumber(tx);
+                  }
+                }}
+                onFocus={() => {
+                  setCardNumberIcon(true);
+                }}
+                onBlur={() => {
+                  setCardNumberIcon(false);
+                }}
+              />
+              {cardNumberIcon && (
+                <DisplayErrorIcon state={cardNumber} id={"cardNumber"} />
+              )}
+            </div>
+          </span>
           <div className="Inline">
             <div>
               <input
@@ -213,28 +231,18 @@ export default function CreditCard({ display }: Props) {
               {CVVIcon && <DisplayErrorIcon state={CVV} id={"CVV"} />}
             </div>
           </div>
+
           <div className="card_installments">
-            <span>Nº de parcelas:</span>
-            <select
-              id="CardInstallments"
-              value={String(CardI.CardInstallments)}
-              onChange={(e) => {
-                let num = e.target.value;
-                CardI.setCardInstallments(Number(num));
+            <Select
+              value={CardI.CardInstallments}
+              style={{
+                width: "100%",
               }}
-            >
-              {map.map(() => {
-                let options = [];
-                for (let x = 1; x <= 10; x++) {
-                  options.push(
-                    <option value={String(x)} key={x}>
-                      {x} X s/ juros R$ {(CardI.TotalPrice / x).toFixed(2)}
-                    </option>
-                  );
-                }
-                return options;
-              })}
-            </select>            
+              onChange={(e) => {
+                CardI.setCardInstallments(Number(e));
+              }}
+              options={options}
+            />
           </div>
           <StyledSubmitButton type="submit">Salvar Cartão</StyledSubmitButton>
         </StyledForm>

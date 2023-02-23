@@ -98,54 +98,9 @@ export default function FormRegister({
           validateAndRegister();
         }}
       >
-        {config.form_register.map((e, index) => {
-          if (index <= 2) {
-            return (
-              <InputForm
-                e={e}
-                key={index}
-                allStates={allStates}
-                allMsg={allMsg}
-              />
-            );
-          }
-        })}
-        <div className="address">
-          <h4>Endereço</h4>
-          <div>
-            <label htmlFor={cfForm.id}>{cfForm.label}</label>
-            <input
-              id={cfForm.id}
-              type="text"
-              value={CEP}
-              onChange={(e) => {
-                let tx = e.target.value.replace(/[^\d]+/g, "");
-                if (tx.length == 8) {
-                  tx = tx.replace(/^(\d{5})(\d{3})/, "$1-$2");
-                  setCEP(tx);
-                  searchViaCep(tx);
-                } else {
-                  if (tx.length > 8) return;
-                  setCEP(tx);
-                }
-              }}
-              onFocus={() => {
-                allMsg[cfForm.id as keyof typeof allMsg]?.set(true);
-              }}
-              onBlur={() => {
-                allMsg[cfForm.id as keyof typeof allMsg]?.set(false);
-              }}
-            />
-            {allMsg[cfForm.id as keyof typeof allMsg]?.state && (
-              <DisplayError
-                state={allStates}
-                id={cfForm.id}
-                msg={cfForm.err_msg}
-              />
-            )}
-          </div>
+        <span className="displayFlex">
           {config.form_register.map((e, index) => {
-            if (index >= 3 && e.id != "CEP") {
+            if (index <= 2) {
               return (
                 <InputForm
                   e={e}
@@ -156,29 +111,77 @@ export default function FormRegister({
               );
             }
           })}
-          <div>
-            <label htmlFor="state">Estado</label>
-            <select
-              name="state"
-              id="state"
-              value={State}
-              onChange={(e) => {
-                setState(e.target.value);
-              }}
-            >
-              <option value="" defaultChecked>
-                Selecione uma opção
-              </option>
-              {config.states.map((e, i) => {
+          <div className="address">
+            <h4>Endereço</h4>
+            <div>
+              <label htmlFor={cfForm.id}>{cfForm.label}</label>
+              <input
+                id={cfForm.id}
+                type="text"
+                value={CEP}
+                onChange={(e) => {
+                  let tx = e.target.value.replace(/[^\d]+/g, "");
+                  if (tx.length == 8) {
+                    tx = tx.replace(/^(\d{5})(\d{3})/, "$1-$2");
+                    setCEP(tx);
+                    searchViaCep(tx);
+                  } else {
+                    if (tx.length > 8) return;
+                    setCEP(tx);
+                  }
+                }}
+                onFocus={() => {
+                  allMsg[cfForm.id as keyof typeof allMsg]?.set(true);
+                }}
+                onBlur={() => {
+                  allMsg[cfForm.id as keyof typeof allMsg]?.set(false);
+                }}
+              />
+              {allMsg[cfForm.id as keyof typeof allMsg]?.state && (
+                <DisplayError
+                  state={allStates}
+                  id={cfForm.id}
+                  msg={cfForm.err_msg}
+                />
+              )}
+            </div>
+            {config.form_register.map((e, index) => {
+              if (index >= 3 && e.id != "CEP") {
                 return (
-                  <option key={i} value={e.uf}>
-                    {e.name}
-                  </option>
+                  <InputForm
+                    e={e}
+                    key={index}
+                    allStates={allStates}
+                    allMsg={allMsg}
+                  />
                 );
-              })}
-            </select>
+              }
+            })}
+            <div>
+              <label htmlFor="state">Estado</label>
+              <select
+              className="select"
+                name="state"
+                id="state"
+                value={State}
+                onChange={(e) => {
+                  setState(e.target.value);
+                }}
+              >
+                <option value="" defaultChecked>
+                  Selecione uma opção
+                </option>
+                {config.states.map((e, i) => {
+                  return (
+                    <option key={i} value={e.uf}>
+                      {e.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </div>
-        </div>
+        </span>
         {showErrorForm && (
           <StyledErrorForm id="Err_PaymentForm">
             Por favor, preencha os campos.

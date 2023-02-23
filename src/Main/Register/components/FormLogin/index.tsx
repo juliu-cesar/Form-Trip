@@ -43,28 +43,30 @@ export default function FormLogin({ display, setEmailRL, setMessage }: Props) {
           validateAndRegister();
         }}
       >
-        <div>
-          <label htmlFor={cEmail.id + "_login"}>{cEmail.label}</label>
-          <input
-            id={cEmail.id + "_login"}
-            type={cEmail.type}
-            value={email}
-            onChange={(eChange) => {
-              setEmail(eChange.target.value.trim());
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor={cPassword.id + "_login"}>{cPassword.label}</label>
-          <input
-            id={cPassword.id + "_login"}
-            type={cPassword.type}
-            value={password}
-            onChange={(eChange) => {
-              setPassword(eChange.target.value.trim());
-            }}
-          />
-        </div>
+        <span className="displayFlex">
+          <div>
+            <label htmlFor={cEmail.id + "_login"}>{cEmail.label}</label>
+            <input
+              id={cEmail.id + "_login"}
+              type={cEmail.type}
+              value={email}
+              onChange={(eChange) => {
+                setEmail(eChange.target.value.trim());
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor={cPassword.id + "_login"}>{cPassword.label}</label>
+            <input
+              id={cPassword.id + "_login"}
+              type={cPassword.type}
+              value={password}
+              onChange={(eChange) => {
+                setPassword(eChange.target.value.trim());
+              }}
+            />
+          </div>
+        </span>
         {showErrorForm && (
           <StyledErrorForm id="Err_PaymentForm">
             Por favor, preencha os campos.
