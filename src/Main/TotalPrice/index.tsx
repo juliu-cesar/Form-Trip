@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { PriceContext } from "../CheckIn/components/PriceProvider";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledTotal } from "./components/StyledTotal";
 
 export default function TotalPrice() {
+  const PriceTotal = useContext(PriceContext);
+  
   return (
     <StyledTotal>
       <StyledContainer Border="color2">

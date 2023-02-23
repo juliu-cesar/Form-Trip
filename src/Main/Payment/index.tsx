@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PriceContext } from "../CheckIn/components/PriceProvider";
 import { StyledButtons } from "../components/StyledButtons";
 import { StyledContainer } from "../components/StyledContainer";
 import { StyledForm } from "../components/StyledForm";
@@ -8,6 +9,7 @@ import Pix from "./components/Pix";
 import { StyledPayment } from "./components/StyledPayment";
 
 export default function Payment() {
+  const PriceMethod = useContext(PriceContext);
   const [PaymentForm, setPaymentForm] = useState(1);
   const [display, setDisplay] = useState("flex");
 
@@ -22,6 +24,7 @@ export default function Payment() {
     });
     num == 1 ? setDisplay("block") : setDisplay("none");
     setPaymentForm(num);
+    PriceMethod.setPaymentMethod(num);
   }
   return (
     <StyledPayment>

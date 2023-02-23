@@ -34,16 +34,17 @@ export default function Amenities() {
           <StyledRooms Width={150} Height={95} className="detail_Bedrooms">
             {house.bedrooms.map((e, i) => {
               return (
-                <div className="bedroom">
+                <div className="bedroom" key={i}>
                   <h4>Quarto {i + 1}</h4>
                   <p>{e.msg}</p>
                   <span>
-                    {e.beds.map((bed) => {
+                    {e.beds.map((bed, i) => {
                       return (
                         <img
                           className="icon"
                           src={`img/icon/svg/${bed}-${context.mode}.svg`}
                           alt="Ícone cama"
+                          key={i}
                         />
                       );
                     })}
@@ -54,9 +55,9 @@ export default function Amenities() {
           </StyledRooms>
         </StyledFrame>
         <div className="Amenities">
-          {house.amenities.map((e)=>{
+          {house.amenities.map((e, i)=>{
             return(
-              <div>{e}</div>
+              <div key={i}>{e}</div>
             )
           })}
         </div>

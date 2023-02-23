@@ -9,7 +9,6 @@ export const StyledTotal = styled.div`
     justify-content: space-between;
   }
   .form_payment {
-    background-color: ${({ theme }) => theme.gray};
     padding: 10px 15px;
     border-radius: 1px;
     h4 {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { StyledForm } from "@/src/Main/components/StyledForm";
 import { StyledSubmitButton } from "@/src/Main/components/StyledSubmitButton";
 import DisplayErrorIcon from "./components/DisplayErrorIcon";
@@ -6,12 +6,15 @@ import { PaymentValidade } from "./components/PaymentValidade";
 import { StyledCreditCard } from "./components/StyledCreditCard";
 import { StyledFormCard } from "./components/StyledFormCard";
 import { StyledErrorForm } from "@/src/Main/components/StyledErrorForm";
+import { PriceContext } from "@/src/Main/CheckIn/components/PriceProvider";
+import { Select } from "antd";
 
 interface Props {
   display: string;
 }
 
 export default function CreditCard({ display }: Props) {
+  const CardI = useContext(PriceContext);
   const [name, setName] = useState("");
   const [CPF, setCPF] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -24,6 +27,22 @@ export default function CreditCard({ display }: Props) {
   const [CVVIcon, setCVVIcon] = useState(false);
   const [SaveCard, setSaveCard] = useState(false);
   const [showErrorForm, setShowErrorForm] = useState(false);
+  let map = [""];
+
+  let option = [
+    <option value="r">Novo</option>,
+    <option value="n">New</option>,
+  ];
+  let options = [
+    {
+      value: "Hello world",
+      label: "Novo",
+    },
+    {
+      value: "Ola Mundo",
+      label: "New",
+    },
+  ];
 
   function ValidateAndSave() {
     let py = PaymentValidade;
@@ -193,6 +212,29 @@ export default function CreditCard({ display }: Props) {
               />
               {CVVIcon && <DisplayErrorIcon state={CVV} id={"CVV"} />}
             </div>
+          </div>
+          <div className="card_installments">
+            <span>Nº de parcelas:</span>
+            <select
+              id="CardInstallments"
+              value={String(CardI.CardInstallments)}
+              onChange={(e) => {
+                let num = e.target.value;
+                CardI.setCardInstallments(Number(num));
+              }}
+            >
+              {map.map(() => {
+                let options = [];
+                for (let x = 1; x <= 10; x++) {
+                  options.push(
+                    <option value={String(x)} key={x}>
+                      {x} X s/ juros R$ {(CardI.TotalPrice / x).toFixed(2)}
+                    </option>
+                  );
+                }
+                return options;
+              })}
+            </select>            
           </div>
           <StyledSubmitButton type="submit">Salvar Cartão</StyledSubmitButton>
         </StyledForm>

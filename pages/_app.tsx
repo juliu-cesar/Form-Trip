@@ -8,6 +8,7 @@ import { CSSReset } from "../styles/CSSReset";
 import CarouselProvider from "@/src/Carousel/components/CarouselProvider";
 import PtBr from "antd/locale/pt_BR";
 import { ConfigProvider } from "antd";
+import PriceProvider from "@/src/Main/CheckIn/components/PriceProvider";
 
 const theme = {
   light: {
@@ -27,7 +28,7 @@ const theme = {
     color2: "#088000",
 
     gray: "#7e7e7e",
-    semi_black: "#505050",
+    semi_black: "#454545",
     background_base: "#252525",
     text_color: "#D8D8D8",
 
@@ -49,7 +50,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 function ProviderWrapper(props: any) {
   return (
     <ColorProvider initialValue={"dark"}>
-      <CarouselProvider initialValue={0}>{props.children}</CarouselProvider>
+      <CarouselProvider initialValue={0}>
+        <PriceProvider>{props.children}</PriceProvider>
+      </CarouselProvider>
     </ColorProvider>
   );
 }

@@ -8,9 +8,11 @@ import config from "@/config.json";
 import dayjs from "dayjs";
 import AmountOfPeople from "./components/AmountOfPeople";
 import { CarouselContext } from "@/src/Carousel/components/CarouselProvider";
+import { PriceContext } from "./components/PriceProvider";
 
 export default function CheckIn() {
   const SelectHouse = useContext(CarouselContext);
+  const PriceTotal = useContext(PriceContext);
   const [dateR, setDateR] = useState<any>();
   const [totalDays, setTotalDays] = useState(1);
   const [priceDay, setPriceDay] = useState(0);
@@ -44,6 +46,10 @@ export default function CheckIn() {
     setPriceDay(price.priceDay);
     setServiceCharge(price.serviceCharge);
   }, [SelectHouse.index]);
+  useEffect(() => {
+    let price = config.houses[SelectHouse.index].price;
+    PriceTotal.setTotalPrice(price.priceDay * totalDays + price.serviceCharge);
+  }, [SelectHouse.index, totalDays]);
 
   return (
     <StyledCheckin>
@@ -93,7 +99,7 @@ export default function CheckIn() {
         </div>
         <div id="Total_price" className="Inline">
           <div>Total</div>
-          <div>R$ {priceDay * totalDays + serviceCharge},00</div>
+          <div>R$ {PriceTotal.TotalPrice},00</div>
         </div>
       </StyledContainer>
     </StyledCheckin>

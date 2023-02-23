@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const StyledAmountPeople = styled.div`
   position: absolute;
   z-index: 5;
-  background-color: #333;
+  background-color: ${({ theme }) => theme.background_base};
+  border: 1px solid ${({ theme }) => theme.semi_black};
   top: 65px;
   left: calc(50% - 125px);
   width: 250px;
   height: 165px;
   padding: 20px 10px;
   border-radius: 10px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
