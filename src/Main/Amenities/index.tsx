@@ -54,14 +54,11 @@ export default function Amenities() {
           </StyledRooms>
         </StyledFrame>
         <div className="Amenities">
-          <div>Cozinha Exclusiva</div>
-          <div>WiFi</div>
-          <div>Garagem coberta</div>
-          <div>Piscina privativa externa</div>
-          <div>Jacuzzi privativa</div>
-          <div>Permitido PET</div>
-          <div>Maquina de lavar</div>
-          <div>Netflix, tv a cabo</div>
+          {house.amenities.map((e)=>{
+            return(
+              <div>{e}</div>
+            )
+          })}
         </div>
       </StyledContainer>
     </StyledAmenities>

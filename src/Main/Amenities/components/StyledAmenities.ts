@@ -42,18 +42,17 @@ export const StyledAmenities = styled.div`
   }
   .Amenities {
     width: 100%;
-    padding: 0 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     div {
-      width: 105px;
+      width: 115px;
       height: 70px;
       padding: 2px;
       text-align: center;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       display: flex;
       justify-content: center;
