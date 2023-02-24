@@ -6,17 +6,17 @@ export const StyledCarousel = styled.div`
   padding: 0 16px;
   margin: auto;
   margin-bottom: 30px;
-  button{
+  button {
     width: 50px;
     height: 45px;
     padding: 6px;
     border-radius: 50%;
-    transition: all .4s;
+    transition: all 0.4s;
     display: flex;
     align-items: center;
     justify-content: center;
-    :hover{
-      outline: 2px solid ${({theme})=> theme.text_color};
+    :hover {
+      outline: 2px solid ${({ theme }) => theme.text_color};
     }
   }
   .frame {
@@ -43,7 +43,7 @@ export const StyledCarousel = styled.div`
     left: 0px;
     display: flex;
     flex-direction: row;
-    transition: all 0.7s cubic-bezier(0.215, 0.610, 0.355, 1);
+    transition: all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   .card_img {
     position: relative;
@@ -51,6 +51,34 @@ export const StyledCarousel = styled.div`
     height: 100%;
     img {
       width: 100%;
+    }
+  }
+  @media (max-width: 620px) {
+    padding: 0 10px;
+    .frame {
+      gap: 10px;
+    }
+    .frame_img {
+      width: 100%;
+      height: 45vw;
+    }
+    button {
+      width: 45px;
+      height: 40px;
+      padding: 5px;
+    }
+  }
+  @media (max-width: 400px) {
+    width: 100%;
+    min-width: 280px;
+    min-height: 120px;
+    padding: 0 5px;
+    .frame {
+      gap: 5px;
+    }
+    .frame_img {
+      /* height: 50vw; */
+      min-height: 120px;
     }
   }
   @media (min-width: 1000px) {

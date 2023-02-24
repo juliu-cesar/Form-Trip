@@ -8,8 +8,8 @@ export const CSSReset = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-		background-color: ${({theme})=> theme.background_base};
-		color: ${({theme})=> theme.text_color};
+		background-color: ${({ theme }) => theme.background_base};
+		color: ${({ theme }) => theme.text_color};
     font-family: 'Montserrat', sans-serif;
     width: 99vw;
     overflow-x: hidden;
@@ -21,7 +21,7 @@ export const CSSReset = createGlobalStyle`
   /* NextJS */
   #__next {
     width: 100%;
-    min-width: 280px;
+    min-width: 300px;
   }
   /* Globals */
   button,
@@ -30,5 +30,11 @@ export const CSSReset = createGlobalStyle`
     text-decoration: none;
     opacity: 1;
     transition: all .4s;
+  }
+  @media (max-width: 600px) {
+    .ant-picker-panels{
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
