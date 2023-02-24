@@ -38,6 +38,9 @@ export const StyledForm = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    input {
+      width: 100%;
+    }
   }
   @media (max-width: 400px) {
     .Inline {
